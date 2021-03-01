@@ -1,0 +1,42 @@
+﻿@page "/"
+
+<MudButton Variant="Variant.Outlined">Save</MudButton>
+<MudButton Variant="Variant.Outlined" Color="Color.Primary">Preview</MudButton>
+<MudButton Variant="Variant.Outlined" Color="Color.Secondary">Send</MudButton>
+<MudGrid>
+    <MudItem xs="12" sm="5" md="6">
+        <MudTextField @bind-Value="HelperText" Label="name@example.com" Required="true" RequiredError="Email is required!" HelperText="We'll never share your email with anyone else." Variant="Variant.Text" />
+    </MudItem>
+    <MudItem xs="12" sm="5" md="6">
+        <MudTextField @bind-Value="HelperText" Label="Rss url" Variant="Variant.Text" />
+    </MudItem>
+
+    @if (Elements == null)
+    {
+        <p>There are nothing.</p>
+    }
+    else
+    {
+        <MudTable Items="@Elements" Hover="true" Breakpoint="Breakpoint.Sm">
+            <HeaderContent>
+                <MudTh>RSS</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Nr">@context.RssUrl</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+
+</MudGrid>
+
+
+@code{
+    public string HelperText { get; set; }
+    private IEnumerable<Rss> Elements = new List<Rss>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Elements.ToList();
+        //Elements = await httpClient.GetFromJsonAsync<List<Rss>>();
+    }
+}
