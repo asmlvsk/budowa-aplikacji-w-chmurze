@@ -1,30 +1,43 @@
 ﻿@page "/"
+@inject RssFeed FeedService
 
 <MudButton Variant="Variant.Outlined">Save</MudButton>
 <MudButton Variant="Variant.Outlined" Color="Color.Primary">Preview</MudButton>
-<MudButton Variant="Variant.Outlined" Color="Color.Secondary">Send</MudButton>
+<MudButton @onclick="@(e => Clicked())" Variant="Variant.Outlined" Color="Color.Secondary">Send</MudButton>
 <MudGrid>
     <MudItem xs="12" sm="5" md="6">
         <MudTextField @bind-Value="HelperText" Label="name@example.com" Required="true" RequiredError="Email is required!" HelperText="We'll never share your email with anyone else." Variant="Variant.Text" />
     </MudItem>
     <MudItem xs="12" sm="5" md="6">
-        <MudTextField @bind-Value="HelperText" Label="Rss url" Variant="Variant.Text" />
+        <MudTextField @bind-Value="UrlAddress" Label="Rss url" Variant="Variant.Text" />
     </MudItem>
 
-    @if (Elements == null)
+    @if (feeds == null)
     {
         <p>There are nothing.</p>
     }
     else
     {
-        <MudTable Items="@Elements" Hover="true" Breakpoint="Breakpoint.Sm">
-            <HeaderContent>
-                <MudTh>RSS</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd DataLabel="Nr">@context.RssUrl</MudTd>
-            </RowTemplate>
-        </MudTable>
+    <MudSimpleTable>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Publish Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var feed in feeds)
+            {
+                <tr>
+                    <td><NavLink href=@feed.Link target="_blank">@feed.Title</NavLink></td>
+                    <td>@feed.Content</td>
+                    <td>@feed.PublishDate</td>
+                </tr>
+
+            }
+        </tbody>
+    </MudSimpleTable>
     }
 
 </MudGrid>
@@ -32,11 +45,19 @@
 
 @code{
     public string HelperText { get; set; }
-    private IEnumerable<Rss> Elements = new List<Rss>();
+    public string UrlAddress { get; set; }
+    //private IEnumerable<Rss> Elements = new List<Rss>();
+    private IEnumerable<NewsModel> News = new List<NewsModel>();
 
+    List<NewsModel> feeds;
     protected override async Task OnInitializedAsync()
     {
-        Elements.ToList();
-        //Elements = await httpClient.GetFromJsonAsync<List<Rss>>();
+
     }
+
+    private async Task Clicked()
+    {
+        feeds = await FeedService.GetFeedsAsyc(UrlAddress);
+    }
+
 }

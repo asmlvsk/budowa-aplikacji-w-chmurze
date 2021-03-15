@@ -61,3 +61,15 @@ C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\Microsoft.JSInterop.dll
 C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\MudBlazor.dll
 C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\Admin\Desktop\BIAwC\BIAwC\obj\Debug\net5.0\BIAwC.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\DnsClient.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\MongoDB.Bson.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\MongoDB.Driver.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\MongoDB.LibMongocrypt.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\SharpCompress.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\Admin\Desktop\BIAwC\BIAwC\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll

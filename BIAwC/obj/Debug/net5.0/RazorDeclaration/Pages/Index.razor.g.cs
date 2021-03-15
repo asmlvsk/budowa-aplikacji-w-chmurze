@@ -21,77 +21,98 @@ using System.Net.Http;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Authorization;
+using System.Xml.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using BIAwC;
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using BIAwC.Shared;
+using BIAwC;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
-using MudBlazor;
+using BIAwC.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
 using BIAwC.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
+using BIAwC.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\Admin\Desktop\BIAwC\BIAwC\_Imports.razor"
+using MongoDB;
 
 #line default
 #line hidden
@@ -105,20 +126,29 @@ using BIAwC.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\Admin\Desktop\BIAwC\BIAwC\Pages\Index.razor"
+#line 46 "C:\Users\Admin\Desktop\BIAwC\BIAwC\Pages\Index.razor"
       
     public string HelperText { get; set; }
-    private IEnumerable<Rss> Elements = new List<Rss>();
+    public string UrlAddress { get; set; }
+    //private IEnumerable<Rss> Elements = new List<Rss>();
+    private IEnumerable<NewsModel> News = new List<NewsModel>();
 
+    List<NewsModel> feeds;
     protected override async Task OnInitializedAsync()
     {
-        Elements.ToList();
-        //Elements = await httpClient.GetFromJsonAsync<List<Rss>>();
+
     }
+
+    private async Task Clicked()
+    {
+        feeds = await FeedService.GetFeedsAsyc(UrlAddress);
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private RssFeed FeedService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,3 +1,4 @@
+using BIAwC.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using MudBlazor.Services;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,13 @@ namespace BIAwC
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddMudServices();
+
+            services.AddSingleton<RssFeed>();
+
+            services.AddSingleton<MongoDbContext>();
+
+            services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
+            services.AddSingleton<IDatabaseSettings>(x => x.GetRequiredService<IOptions<DatabaseSettings>>().Value);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
